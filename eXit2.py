@@ -57,70 +57,87 @@ print(ascii)
 def print_ascii_art():
     print(ascii)
 
+mensagem_secreta = "'Eu amo você'."
+
 def start_game():
     print_ascii_art()
     start_again()
 
 def start_again():
-    input('Press the enter button to continue...')
+    input('Pressione Enter para continuar...')
     trapped()
 
 def trapped():
-    print("You're trapped in a dungeon with your friend." + "\n" + "You see a barrel. What do you do?")
+    print("Você está preso em uma masmorra com seu amigo." + "\n" + "Você vê um barril. O que você faz?")
     action = input(">")
     if action.lower() == "move barrel":
         dungeon()
     else:
-        print("You can't do that here.")
+        print("Você não pode fazer isso aqui.")
         trapped()
 
 def dungeon():
-    print("The barrel rolls aside and you find a secret tunnel." + "\n" + "What do you do?")
+    print("O barril rola para o lado e você encontra um túnel secreto." + "\n" + "O que você faz?")
     action = input(">")
     if action.lower() == "enter tunnel":
         bye()
     else:
-        print("You can't do that here.")
+        print("Você não pode fazer isso aqui.")
         dungeon()
 
 def bye():
-    print("You start to escape but your friend is too weak to go with you. They hand you a note." + "\n" + "What do you do?")
+    print("Você começa a escapar, mas seu amigo está muito fraco para ir com você. Eles lhe entregam uma nota." + "\n" + "O que você faz?")
     action = input(">")
     if action.lower() == "read note":
         note()
     else:
-        print("You can't do that here.")
+        print("Você não pode fazer isso aqui.")
         bye()
 
 def note():
-    print("It is too dark to read the note." + "\n" + "What do you do?")
+    print("A nota diz: 'Não me deixe aqui'." + "\n" + "O que você faz?")
     action = input(">")
-    if action.lower() == "leave":
+    if action.lower() == "lit a match":
+        print("Você acende um fósforo e vê que a nota tem uma mensagem secreta.")
+        action = input(">")
+        if action.lower() == "stay":
+            stay()
+        elif action.lower() == "leave":
+            leave()
+        else:
+            print("Você não pode fazer isso aqui.")
+            note()
+    elif action.lower() == "stay":
+        stay()
+    elif action.lower() == "leave":
         leave()
     else:
-        print("You can't do that here.")
+        print("Você não pode fazer isso aqui.")
         note()
 
+def stay():
+    print(mensagem_secreta)
+
 def leave():
-    print("You crawl through the tunnel and the tunnel leads to a beach." + "\n" + "What do you do?")
+    print("Você decide deixar seu amigo para trás e continuar sozinho." + "\n" + "Você rasteja através do túnel e ele leva a uma praia.")
     action = input(">")
     if action.lower() == "look":
         look()
     else:
-        print("You can't do that here.")
+        print("Você não pode fazer isso aqui.")
         leave()
 
 def look():
-    print("In the water you see a boat." + "\n" + "What do you do?")
+    print("Na água você vê um barco." + "\n" + "O que você faz?")
     action = input(">")
     if action.lower() == "get on boat":
         congrats()
     else:
-        print("You can't do that here.")
+        print("Você não pode fazer isso aqui.")
         look()
 
 def congrats():
-    print("Congratulations, you're heading to a new world!." + "\n" + "Do you want to play again?")
+    print("Parabéns, você está indo para um novo mundo!." + "\n" + "Você quer jogar novamente?")
     action = input(">")
     if action.lower() == "yes":
         os.execl(sys.executable, os.path.abspath(__file__), *sys.argv)
