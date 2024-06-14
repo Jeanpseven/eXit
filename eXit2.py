@@ -53,11 +53,11 @@ ascii = '''
 ████████████████████████████████████████████████████████████████████████████████
 ████████████████████████████████████████████████████████████████████████████████
 '''
-print(ascii)
+
 def print_ascii_art():
     print(ascii)
 
-mensagem_secreta = "Você encontrou uma mensagem secreta: 'Eu amo você'."
+mensagem_secreta = "'Eu amo você'."
 
 def print_ascii_art():
     print(ascii)
@@ -89,7 +89,7 @@ def dungeon():
         dungeon()
 
 def bye():
-    print("Você começa a escapar, mas seu amigo está muito fraco para ir com você. Eles lhe entregam uma nota." + "\n" + "O que você faz?")
+    print("Você começa a escapar, mas seu amigo está muito fraco para ir com você. Ele lhe entrega uma nota." + "\n" + "O que você faz?")
     action = input(">")
     if action.lower() == "read note":
         read_note()
